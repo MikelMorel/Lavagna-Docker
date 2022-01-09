@@ -1,0 +1,7 @@
+FROM maven:3.8-openjdk-8
+WORKDIR /docks
+COPY ./project/pom.xml ./pom.xml
+COPY ./project/src/main/stampo ./src/main/stampo
+RUN mvn clean stampo:build
+
+ENTRYPOINT [ "mvn" , "stampo:serve" ]
